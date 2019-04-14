@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>朱一龙个站2.0</title>
+	<style type="text/css">
+	    *{
+	    	box-sizing: border-box;
+	    }
+	    body{
+	    	margin: 0;
+	    }
+	    header{	    	
+	    	width: 210px;
+	    	height: 80px;
+	    	background-color: white;
+	    	margin-top: -10px; 
+	    	text-align: center;
+	    	line-height: 80px;/*line-height=height,设置文本垂直居中*/
+	    }
+	    .box{
+
+	    	width: 450px;
+	    	height: 350px;
+	    	
+	    }
+	    /*移除列表默认的padding-left和margin-top的值*/
+	    .box ul{
+	    	padding-left: 0;
+	    	margin: 0; 
+	    	list-style-type: none;/*移除列表的默认样式(小圆点)*/
+	    }
+
+	    .li1{
+	    	float: left;/*让li1浮动float合成一行，作为选项卡*/
+	    	width: 70px;
+	    }
+	    /*设置选项栏的样式*/
+	    .li1 a{
+	    	display: inline-block;/*有块级属性，但显示为行内元素*/
+	    	text-decoration: none;/*移除链接的下划线*/
+	    	line-height: 3;
+	    	background-color: red;
+	    	color: black;
+	    	text-align:center;/*文本居中*/
+	    	margin: 0;
+	    	width: 100%;
+	    }
+	    /*设置不同状态下的选项显示*/
+	    /*:focus表示获得焦点时、：hover表示鼠标悬空在上面*/
+	    .li1 a:focus,.li1 a:hover {
+	    	background-color: #a60000;
+	    	color: white;
+
+	    }
+
+	    .li1 a.active{
+	    	background-color: #a60000;
+	    	color: white;
+
+	    }
+	    /*设置整个页面的样式*/	   
+	    .box .panels{
+	    	clear: both;/*清除浮动*/
+	    	position: relative;/*觉对定位的参照元素*/
+	    	height: 300px;
+	    	margin-top: -14px ; 
+
+	    }
+	    /*设置单个页面的样式*/
+	    article{
+	    	background-color: #a60000;
+	    	color: white;
+	    	position: absolute;/*通过绝对定位将三个页面重叠*/
+	    	top: 0;
+	    	left: 0;
+	    	padding: 10px;
+	    	height: 350px;
+	    	top: 0;
+	    	left: 0;
+	    	width: 210px;
+
+	    }
+	    .box .active-panels{
+	    	z-index: 1;
+	    }
+
+
+	</style>
+</head>
+<body background="zhuzhu1.jpg">
+	<header>
+		<h1>朱一龙个站</h1>
+	</header>
+	<section class="box">
+		<ul>
+			<li class="li1"><a href="#" class="active">基本信息</a></li>
+			<li class="li1"><a href="#">电影</a></li>
+			<li class="li1"><a href="#">电视剧</a></li>
+		</ul>
+		<!-- 设计整块面板-->
+		<div class="panels">
+			<!--第一块面板-->
+			<article class="active-panels">
+				<h2>基本信息</h2>
+				<ul>
+					<li>姓名：朱一龙</li>		    	
+		    	    <li>星座：白羊座</li>
+		    		<li>血型：O型</li>		    	
+		    		<li>职业：演员</li>
+		    		<li>出生地：湖北武汉</li>
+		    		<li>出生日期：1988.04.16</li>
+		    		<li>身高体重：180cm 62kg</li>
+		    		<li>毕业院校：北京电影学院</li>
+				</ul>
+			</article>
+			<!--第二块面板-->
+			<article>
+				<h2>电影</h2>
+				<ul>
+					<li>《再生缘》</li>
+		    		<li>《抢来的新娘》</li>
+		    		<li>《血色深宅》</li>
+		    		<li>《血玉咒》</li>
+		    		<li>《胭脂劫》</li>
+		    		<li>《猎野人》</li>
+		    		<li>《偷窥者》</li>
+		    		<li>《战地情天》</li>
+					</ul>
+			</article>
+			<!--第二块面板-->
+			<article>
+				<h2>电视剧</h2>
+				<ul>
+					<li>《大明嫔妃》</li>
+		    		<li>《王阳明》</li>
+		    		<li>《风雨梵净山》</li>
+		    		<li>《家宴》</li>
+		    		<li>《情定三生》</li>
+		    		<li>《萧十一郎》</li>
+		    		<li>《芈月传》</li>
+		    		<li>《边城浪子》</li>
+				</ul>
+			</article>
+		</div>
+	</section>
+		<script type="text/javascript">
+			/*创建两个变量，用来存储所有的选项卡和页面，querySelectorAll（）找到所有比配的结点，并返回数组,此时选项卡和页面的位置一一对应*/
+			var tabs = document.querySelectorAll('.box .li1 a')
+			var panels=document.querySelectorAll('.box article')
+			/*定义一个函数setTabHandler(），实现点击鼠标时的操作*/
+			function setTabHandler(tab,tabpos){
+				/tab.onclick 表示tab被点击*/
+				tab.onclick = function(){
+					/*遍历tabs[]数组，把所有选项（即tabs/a的class设置为空）*/
+					for(i=0;i<tabs.length;i++){
+						tabs[i].className='';
+					}
+					/*把被点击的tab的class设为active*/
+					tab.className='active';
+					/*遍历panels[]数组，把所有页面（即panels/article的class设置为空）*/
+					for(i=0;i<panels.length;i++){
+						panels[i].className='';
+					}
+					/*把与被点击的tab相对应的panels的class设为active-panels*/
+					panels[tabpos].className='active-panels';
+				}
+			}
+			/*遍历所有的选项卡，并且在每一个上运行setTabHandler() 的函数，此函数建立当每个选项卡被点击时应该发生的功能。 运行时， 函数会被传递选项卡，和一个索引数i 指明选项卡在tabs 数组中的位置*/
+			for(i=0;i<tabs.length;i++){
+				var tab=tabs[i];
+				setTabHandler(tab,i);
+			}
+		</script>
+
+</body>
+</html>
