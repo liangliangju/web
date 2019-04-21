@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>三列布局4.0</title>
+	<style type="text/css">
+	*{
+		box-sizing: border-box;
+		margin: 0;
+	}
+	.box{
+		width: 200px;
+		background-color: green;
+		float: left;
+	}
+	.box1{
+		margin: 0 230px;/*此时的margin不是与左右两栏的距离，而是与body的距离*/
+		background-color: yellow;
+	}
+	.box2{
+		width: 200px;
+		background-color: lightblue;
+		position: absolute;
+		right: 0;
+		top: 0;
+
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p>box</p>
+	</div>
+	<div class="box1">
+		<h2>box1</h2>
+		<p>利用浮动+绝对定位</p>
+	</div>
+	<div class="box2">
+		<p>box2</p>
+	</div>
+</body>
+</html>
